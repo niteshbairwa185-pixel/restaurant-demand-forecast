@@ -3,9 +3,9 @@
 | File | Rows | Columns | Row = one ... | Key | Notes |
 |---|---|---|---|---|---|
 | air_visit_data | 252,108 | air_store_id, visit_date, visitors | store-day | (air_store_id, visit_date), 0 duplicates | Target = visitors. 829 stores, 2016-01-01 to 2017-04-22. Coverage 85.1% inside each store's own span |
-| air_reserve | 92,378 | air_store_id, visit_datetime, reserve_datetime, reserve_visitors | reservation record | No natural key (to verify) | Use reserve_datetime to avoid leakage. Must be aggregated to daily totals before joining |
+| air_reserve | 92,378 | air_store_id, visit_datetime, reserve_datetime, reserve_visitors | reservation record | No natural key: 6,675 rows share (air_store_id, visit_datetime, reserve_datetime) with another row | Use reserve_datetime to avoid leakage. Must be aggregated to daily totals before joining. “Do not drop these rows; they look like separate bookings in the same hour. Sum reserve_visitors when aggregating to daily totals.”|
 | air_store_info | 829 | air_store_id, air_genre_name, air_area_name, latitude, longitude | Air restaurant | air_store_id | Restaurant type and location. No name column |
-| hpg_reserve | 2,000,320 | hpg_store_id, visit_datetime, reserve_datetime, reserve_visitors | reservation record | No natural key (to verify) | Largest file: 121 MB on disk, 426 MB in pandas. Filter to mapped stores before joining |
+| hpg_reserve | 2,000,320 | hpg_store_id, visit_datetime, reserve_datetime, reserve_visitors | reservation record |No natural key: 20,215 rows share (hpg_store_id, visit_datetime, reserve_datetime) with another row| Largest file: 121 MB on disk, 426 MB in pandas. Filter to mapped stores before joining . “Do not drop these rows; they look like separate bookings in the same hour. Sum reserve_visitors when aggregating to daily totals.”|
 | hpg_store_info | 4,690 | hpg_store_id, hpg_genre_name, hpg_area_name, latitude, longitude | HPG restaurant | hpg_store_id | Many more restaurants than Air |
 | store_id_relation | 150 | air_store_id, hpg_store_id | Air-HPG restaurant pair | air_store_id | Only 150 of 829 Air stores have an HPG ID |
 | date_info | 517 | calendar_date, day_of_week, holiday_flg | calendar day | calendar_date | Japan calendar with holiday flag, known in advance for future dates |
