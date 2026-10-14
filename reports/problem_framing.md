@@ -26,7 +26,7 @@
 
 | File | What it contains | Columns I'd use | Why |
 |---|---|---|---|
-| `air_visit_data` | Daily visitors per Air restaurant | `air_store_id`, `visit_date`, `visitors` | `air_store_id` identifies the restaurant, `visvisitors` is my target |
+| `air_visit_data` | Daily visitors per Air restaurant | `air_store_id`, `visit_date`, `visitors` | `air_store_id` identifies the restaurant, and `visitors` is my target |
 | `air_reserve` | Reservations made through the Air system | `air_store_id`, `visit_datetime`, `reserve_datetime`, `reserve_visitors` | Shows how many people have already booked, and `reserve_datetime` helps avoid data leakage |
 | `air_store_info` | Information about Air restaurants | `air_store_id`, `air_genre_name`, `air_area_name`, `latitude`, `longitude` | Restaurant type and location change demand (for example a ramen shop vs an izakaya) |
 | `hpg_reserve` | Reservations made through the HPG website | `hpg_store_id`, `visit_datetime`, `reserve_datetime`, `reserve_visitors` | Extra booking signal, but it must be linked to Air stores first |
