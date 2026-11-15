@@ -26,6 +26,7 @@ h11==0.16.0
 httpcore==1.0.9
 httpx==0.28.1
 idna==3.20
+iniconfig==2.3.1
 ipykernel==7.4.0
 ipython==9.17.1
 ipython_pygments_lexers==1.1.1
@@ -71,6 +72,7 @@ pandocfilters==1.5.1
 parso==0.8.7
 pillow==12.3.0
 platformdirs==4.12.3
+pluggy==1.7.0
 prometheus_client==0.26.0
 prompt_toolkit==3.0.53
 psutil==7.2.2
@@ -78,6 +80,7 @@ pure_eval==0.2.4
 pycparser==3.0
 Pygments==2.21.0
 pyparsing==3.3.3
+pytest==9.2.0
 python-dateutil==2.9.0.post0
 python-json-logger==4.2.0
 pywinpty==3.0.5
